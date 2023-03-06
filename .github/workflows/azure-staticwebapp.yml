@@ -1,0 +1,24 @@
+name: Azure Deployment
+
+on: workflow_dispatch
+
+env:
+  TEMPLATE_FILE: .landing-zone/Azure Landing Zone Template.json
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Deploy to Azure
+        uses: azure/cli@v1
+        with:
+          inlineScript: |
+            az deployment group create --name myDeployment --template-file ${{ env.TEMPLATE_FILE }}
