@@ -25,6 +25,7 @@
     },
     "subnetName": {
       "type": "string",
+      "defaultValue": "landing-zone-subnet2",
       "metadata": {
         "description": "The name of the Azure subnet to create."
       }
