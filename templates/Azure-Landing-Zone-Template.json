@@ -11,7 +11,7 @@
     },
     "landingZoneName": {
       "type": "string",
-      "defaultValue": "landing-zone-subs",
+      "defaultValue": "Azure subscription 1",
       "metadata": {
         "description": "The name of the Azure subscription to create for the landing zone resources."
       }
