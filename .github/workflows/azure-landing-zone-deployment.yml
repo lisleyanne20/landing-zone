@@ -3,7 +3,7 @@ name: Azure Deployment
 on: workflow_dispatch
 
 env:
-  TEMPLATE_FILE: .templates/Azure-Landing-Zone-Template.json
+  TEMPLATE_FILE: /templates/Azure-Landing-Zone-Template.json
 jobs:
   deploy:
     runs-on: ubuntu-latest
