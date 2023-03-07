@@ -2,20 +2,20 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "managementGroupName": {
-      "type": "string",
-      "defaultValue": "landing-zone-mg2",
-      "metadata": {
-        "description": "The name of the Azure management group to create."
-      }
-    },
-    "landingZoneName": {
-      "type": "string",
-      "defaultValue": "Azure subscription 1",
-      "metadata": {
-        "description": "The name of the Azure subscription to create for the landing zone resources."
-      }
-    },
+    // "managementGroupName": {
+    //   "type": "string",
+    //   "defaultValue": "landing-zone-mg2",
+    //   "metadata": {
+    //     "description": "The name of the Azure management group to create."
+    //   }
+    // },
+    // "landingZoneName": {
+    //   "type": "string",
+    //   "defaultValue": "Azure subscription 1",
+    //   "metadata": {
+    //     "description": "The name of the Azure subscription to create for the landing zone resources."
+    //   }
+    // },
     "virtualNetworkName": {
       "type": "string",
       "defaultValue": "landing-zone-vn",
@@ -29,39 +29,39 @@
       "metadata": {
         "description": "The name of the Azure subnet to create."
       }
-    },
-    "aadTenantName": {
-      "type": "string",
-      "defaultValue": "landing-zone-subnet1",
-      "metadata": {
-        "description": "The name of the Azure Active Directory tenant to create."
-      }
     }
+    // "aadTenantName": {
+    //   "type": "string",
+    //   "defaultValue": "landing-zone-subnet1",
+    //   "metadata": {
+    //     "description": "The name of the Azure Active Directory tenant to create."
+    //   }
+    // }
   },
   "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2021-04-01",
-      "name": "string",
-      "scope": "/",
-      "properties": {
-        "details": {
-          "parent": {
-            "id": "string"
-          }
-        },
-        "displayName": "string"
-      }
-    },
-    {
-      "type": "Microsoft.Subscription/subscriptions",
-      "apiVersion": "2021-04-01-preview",
-      "name": "[parameters('landingZoneName')]",
-      "properties": {
-        "displayName": "[parameters('landingZoneName')]",
-        "billingScope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('managementGroupName'))]"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Management/managementGroups",
+    //   "apiVersion": "2021-04-01",
+    //   "name": "string",
+    //   "scope": "/",
+    //   "properties": {
+    //     "details": {
+    //       "parent": {
+    //         "id": "string"
+    //       }
+    //     },
+    //     "displayName": "string"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Subscription/subscriptions",
+    //   "apiVersion": "2021-04-01-preview",
+    //   "name": "[parameters('landingZoneName')]",
+    //   "properties": {
+    //     "displayName": "[parameters('landingZoneName')]",
+    //     "billingScope": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('managementGroupName'))]"
+    //   }
+    // },
     {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2020-05-01",
@@ -82,12 +82,12 @@
       "properties": {
         "addressPrefix": "10.0.0.0/24"
       }
-    },
-    {
-      "type": "Microsoft.AzureActiveDirectory/tenants",
-      "apiVersion": "2021-01-01",
-      "name": "[parameters('aadTenantName')]",
-      "location": "global"
     }
+    // {
+    //   "type": "Microsoft.AzureActiveDirectory/tenants",
+    //   "apiVersion": "2021-01-01",
+    //   "name": "[parameters('aadTenantName')]",
+    //   "location": "global"
+    // }
   ]
 }
