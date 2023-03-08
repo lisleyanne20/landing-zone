@@ -28,7 +28,8 @@
             "metadata": {
             "description": "Location to deploy resources."
         }
-    },   
+    }
+  },
   "resources": [
     {
         "type": "Microsoft.Management/managementGroups",
@@ -104,5 +105,4 @@
           }
       }
     ]
-  }
 }
