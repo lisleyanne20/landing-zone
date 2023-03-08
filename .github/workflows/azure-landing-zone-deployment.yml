@@ -20,4 +20,4 @@ jobs:
         uses: azure/cli@v1
         with:
           inlineScript: |
-            az deployment group create --name myDeployment --template-file ${{ env.TEMPLATE_FILE }}
+            az deployment group create --name myDeployment --resource-group landing-zone-rg --template-file ${{ env.TEMPLATE_FILE }}
