@@ -25,9 +25,9 @@
         },
         "workspaceId": {
             "type": "string",
-            "defaultValue": "landing-zone-workspace",
+            "defaultValue": "/subscriptions/61865f4e-b8b2-4f81-8d4f-c5c3aebe8000/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/myWorkspace",
             "metadata": {
-            "description": "Location to deploy resources."
+            "description": "ID of the Log Analytics workspace to send diagnostic logs to."
         }
     }
   },
@@ -55,23 +55,11 @@
             "[resourceId('Microsoft.Management/managementGroups', parameters('managementGroupName'))]"
         ]
     },
-    // {
-    //     "type": "Microsoft.Resources/resourceGroups/",
-    //     "apiVersion": "2021-04-01",
-    //     "name": "landingZoneRg",
-    //     "location": "[parameters('location')]",
-    //     "properties": {
-    //         "managedBy": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('managementGroupName'))]"
-    //     }
-    // },
     {
         "type": "Microsoft.Network/virtualNetworks",
         "apiVersion": "2021-02-01",
         "name": "landingZoneVnet",
         "location": "[parameters('location')]",
-        // "dependsOn": [
-        //     "[resourceId('Microsoft.Resources/resourceGroups', 'landingZoneRg')]"
-        // ],
         "properties": {
             "addressSpace": {
                 "addressPrefixes": [
