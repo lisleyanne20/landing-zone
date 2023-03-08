@@ -67,7 +67,7 @@
     {
         "type": "Microsoft.Network/virtualNetworks",
         "apiVersion": "2021-02-01",
-        "naame": "landingZoneVnet",
+        "name": "landingZoneVnet",
         "location": "[parameters('location')]",
         "dependsOn": [
             "[resourceId('Microsoft.Resources/resourceGroups', 'landingZoneRg')]"
