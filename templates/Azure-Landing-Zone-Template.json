@@ -25,6 +25,7 @@
         },
         "workspaceId": {
             "type": "string",
+            "defaultValue": "landing-zone-workspace",
             "metadata": {
             "description": "Location to deploy resources."
         }
