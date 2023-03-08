@@ -4,31 +4,31 @@
   "parameters": {
        "managementGroupName": {
             "type": "string",
+            "defaultValue": "landing-zone-mg2",
             "metadata": {
                 "description": "Name of the Management Group to create."
             }
         },
         "subscriptionName": {
             "type": "string",
+            "defaultValue": "Azure Subcription 1",
             "metadata": {
                 "description": "Name of the Subscription to create."
             }
         },
         "location": {
             "type": "string",
+            "defaultValue": "Southeast Asia",
             "metadata": {
                 "description": "Location to deploy resources."
             }
+        },
+        "workspaceId": {
+            "type": "string",
+            "metadata": {
+            "description": "Location to deploy resources."
         }
-    },
-    "variables": {
-        "vnetName": "landingZoneVnet",
-        "subnetName": "default",
-        "rgName": "landingZoneRg",
-        "monitorName": "monitoring",
-        "securityCenterName": "securityCenter"
-    
-    },     
+    },   
   "resources": [
     {
         "type": "Microsoft.Management/managementGroups",
@@ -56,7 +56,7 @@
     {
         "type": "Microsoft.Resources/resourceGroups",
         "apiVersion": "2021-04-01",
-        "name": "[variables('rgName')]",
+        "name": "landingZoneRg",
         "location": "[parameters('location')]",
         "properties": {
             "managedBy": "[concat('/providers/Microsoft.Management/managementGroups/', parameters('managementGroupName'))]"
@@ -65,10 +65,10 @@
     {
         "type": "Microsoft.Network/virtualNetworks",
         "apiVersion": "2021-02-01",
-        "name": "[variables('vnetName')]",
+        "naame": "landingZoneVnet",
         "location": "[parameters('location')]",
         "dependsOn": [
-            "[resourceId('Microsoft.Resources/resourceGroups', variables('rgName'))]"
+            "[resourceId('Microsoft.Resources/resourceGroups', 'landingZoneRg')]"
         ],
         "properties": {
             "addressSpace": {
@@ -78,13 +78,31 @@
               },
               "subnets": [
                   {
-                    "name": "[variables('subnetName')]",
+                    "name": "default",
                     "properties": {
                         "addressPrefix": "10.0.0.0/24"
                     }
                   }
               ]
           }
+      },
+      {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "apiVersion": "2021-05-01-preview",
+          "name": "my-diagnostic-settings",
+          "dependsOn": [
+              "[resourceId('Microsoft.Resources/resourceGroups', 'my-resource-group')]"
+          ],
+          "properties": {
+          "workspaceId": "[parameters('workspaceId')]",
+          "logs": [
+              {
+                "category": "AllLogs",
+                "enabled": true
+              }
+            ]
+          }
       }
-  ]
+    ]
+  }
 }
