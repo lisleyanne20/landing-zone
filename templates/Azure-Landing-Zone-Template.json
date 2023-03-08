@@ -75,23 +75,6 @@
                   }
               ]
           }
-      },
-      {
-        "type": "Microsoft.Insights/diagnosticSettings",
-        "apiVersion": "2021-05-01-preview",
-        "name": "my-diagnostic-settings",
-        "dependsOn": [
-            "[resourceId('Microsoft.Network/virtualNetworks', 'landingZoneVnet')]"
-        ],
-        "properties": {
-            "workspaceId": "[parameters('workspaceId')]",
-            "logs": [
-                {
-                    "category": "AllLogs",
-                    "enabled": true
-                }
-              ]
-          }
-    }
+      }
   ]
 }
