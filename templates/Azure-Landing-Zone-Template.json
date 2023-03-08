@@ -93,7 +93,7 @@
         "apiVersion": "2021-05-01-preview",
         "name": "my-diagnostic-settings",
         "dependsOn": [
-            "[resourceId('Microsoft.Resources/resourceGroups', 'landingZoneRg')]"
+            "[resourceId('Microsoft.Network/virtualNetworks', 'landingZoneVnet')]"
         ],
         "properties": {
             "workspaceId": "[parameters('workspaceId')]",
